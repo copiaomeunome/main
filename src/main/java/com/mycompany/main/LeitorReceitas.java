@@ -14,11 +14,11 @@ import java.util.Scanner;
  *
  * @author heito
  */
-public class Escritor {
+public class LeitorReceitas {
     private static Scanner entrada;
     public static void abrirArquivo(){
         try{
-            entrada = new Scanner(Paths.get(System.getProperty("user.dir")+"\\src\\main\\java\\com\\mycompany\\main\\"+"receitas.txt"+"\\"));
+            entrada = new Scanner(Paths.get(System.getProperty("user.dir")+"\\receitas.txt"));
         }
         catch(IOException e){
             System.err.print(e);
@@ -35,13 +35,14 @@ public class Escritor {
             
             while (entrada.hasNext()){
                 Receita receita = new Receita();
-                Ingrediente ingrediente = new Ingrediente();
-                String prox;
-                receita.setNome(entrada.nextLine());
+                String prox = entrada.nextLine();
+                if(prox=="\n")
+                    break;
+                receita.setNome(prox);
                 receita.setPreparo(entrada.nextLine());
                 prox = entrada.nextLine();
                 while(!prox.equals("r")){
-                    
+                    Ingrediente ingrediente = new Ingrediente();
                     ingrediente.setNome(prox);
                     ingrediente.setTipo(entrada.nextLine());
                     receita.adicionarIngrediente(ingrediente);
@@ -58,4 +59,5 @@ public class Escritor {
             return receitas;
         }
     }
+    
 }

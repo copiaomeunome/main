@@ -37,6 +37,7 @@ public class Ingrediente {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
     
     
 }

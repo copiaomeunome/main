@@ -5,6 +5,7 @@
 package com.mycompany.main;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -13,22 +14,89 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        Ingrediente ingrediente1 = new Ingrediente("ovo","animal");
-        Ingrediente ingrediente2 = new Ingrediente("leite","animal");
-        Ingrediente ingrediente3 = new Ingrediente("massa","industrializado");
-        Ingrediente ingrediente4 = new Ingrediente("fermento","seila");
-        Ingrediente ingrediente5 = new Ingrediente("amburgui de siri","animal");
-        ArrayList<Ingrediente> ingredientes = new ArrayList<>();
-        ingredientes.add(ingrediente1);
-        ingredientes.add(ingrediente2);
-        ingredientes.add(ingrediente3);
-        ingredientes.add(ingrediente4);
-        Escritor.abrirArquivo();
-        ArrayList<Receita> receitas = Escritor.ler();
-        Escritor.fecharArquivo();
-        for(Receita receita : receitas){
-            System.out.println(receita.verificarIngredientes(ingredientes));
+        int escolha = 1;
+        Scanner leitor = new Scanner(System.in);
+        while((escolha>=1) && (escolha <=5)){
+            System.out.println("""
+                               Escolha o que deseja fazer:
+                               (1)Cadastrar Receitas
+                               (2)Listar Receitas
+                               (3)Cadastrar Ingredientes (não implementado)
+                               (4)Listar Ingredientes (não implementado)
+                               (5)Fazer uma lista de Ingredientes que tem em casa e ver quais receitas podem ser feitas
+                               (qualquer número não listado)Sair""");
+            escolha = leitor.nextInt();
+            switch(escolha){
+                case 1 -> {
+                    LeitorReceitas.abrirArquivo();
+                    ArrayList<Receita> receitas = LeitorReceitas.ler();
+                    LeitorReceitas.fecharArquivo();
+                    EscritorReceitas.abrirArquivo();
+                    for(Receita receita : receitas){
+                        EscritorReceitas.escrever(receita);
+                    }
+                    System.out.println("Escreva na ordem:\no nome da receita, o modo de preparo, a quantidade de ingredientes e os ingredientes");
+                    leitor.nextLine();
+                    Receita receita = new Receita();
+                    receita.setNome(leitor.nextLine());
+                    receita.setPreparo(leitor.nextLine());
+                    
+                    int quantI = leitor.nextInt();
+                    leitor.nextLine();
+                    ArrayList<Ingrediente> ingredientes = new ArrayList<>();
+                    for(int i = 0;i<quantI;i++){
+                        Ingrediente ingrediente = new Ingrediente();
+                        System.out.println("Nome do ingrediente "+i+":");
+                        ingrediente.setNome(leitor.nextLine());
+                        System.out.println("Tipo do ingrediente "+i+":");
+                        ingrediente.setTipo(leitor.nextLine());
+                        ingredientes.add(ingrediente);
+                    }
+                    receita.setIngredientes(ingredientes);
+                    EscritorReceitas.escrever(receita);
+                    receita.setIngredientes(ingredientes);
+                    EscritorReceitas.fecharArquivo();
+                    break;
+                }
+                case 2 ->{
+                    System.out.println("entrou");
+                    LeitorReceitas.abrirArquivo();
+                    ArrayList<Receita> receitas = LeitorReceitas.ler();
+                    LeitorReceitas.fecharArquivo();
+                    for(Receita receita: receitas)
+                        System.out.println(receita.getNome());
+                    break;
+                }
+                case 5 ->{
+                    System.out.println("Digite a quantidade de ingredientes que tem em casa:");
+                    int quantI = leitor.nextInt();
+                    leitor.nextLine();
+                    ArrayList<Ingrediente> ingredientes = new ArrayList<>();
+                    for(int i=0;i<quantI;i++){
+                        Ingrediente ingrediente = new Ingrediente();
+                        System.out.println("Digite o nome do ingrediente "+i+":");
+                        ingrediente.setNome(leitor.nextLine());
+                        System.out.println("Digite o tipo do ingrediente "+i+":");
+                        ingrediente.setTipo(leitor.nextLine());
+                        ingredientes.add(ingrediente);
+                    }
+                    LeitorReceitas.abrirArquivo();
+                    ArrayList<Receita> receitas = LeitorReceitas.ler();
+                    LeitorReceitas.fecharArquivo();
+                    System.out.println("Receitas que podem ser feitas:");
+                    for(Receita receita : receitas)
+                        if(receita.verificarIngredientes(ingredientes))
+                            System.out.println(receita.getNome());
+                    
+                    break;
+                }
+                default ->{
+                    
+                }
+            }
+        
         }
+        
         
         
     }

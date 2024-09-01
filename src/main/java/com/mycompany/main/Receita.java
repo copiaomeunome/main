@@ -57,6 +57,14 @@ public class Receita {
     public void setPreparo(String preparo) {
         this.preparo = preparo;
     }
+
+    public ArrayList<Ingrediente> getIngredientes() {
+        return ingredientes;
+    }
+
+    public void setIngredientes(ArrayList<Ingrediente> ingredientes) {
+        this.ingredientes = ingredientes;
+    }
     
     
 }
