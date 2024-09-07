@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane fx:id="StackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="receitas.FXMLDocumentController">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <BorderPane fx:id="borderPane" layoutX="35.0" layoutY="41.0" prefHeight="600.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <top>
+                  <AnchorPane prefHeight="45.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutY="-77.0" prefHeight="35.0" prefWidth="1100.0" style="-fx-background-color: #f45d4c;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label layoutX="55.0" layoutY="14.0" prefHeight="17.0" prefWidth="113.0" text="RECEITAS" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="15.0" />
+                                 </font></Label>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </top>
+               <left>
+                  <AnchorPane prefHeight="555.0" prefWidth="211.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutX="-13.0" layoutY="99.0" prefHeight="555.0" prefWidth="211.0" style="-fx-background-color: #f7a541;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label layoutX="13.0" layoutY="150.0" prefHeight="23.0" prefWidth="195.0" text="COZINHA DE CASA" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Line endX="100.0" layoutX="105.0" layoutY="190.0" startX="-100.0" stroke="WHITE" />
+                              <Button layoutX="20.0" layoutY="243.0" mnemonicParsing="false" onMouseClicked="#home" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: transparent;" text="HOME" textFill="WHITE" />
+                              <Button layoutX="20.0" layoutY="278.0" mnemonicParsing="false" onMouseClicked="#page1" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: transparent;" text="RECEITAS" textFill="WHITE" />
+                              <Button layoutX="20.0" layoutY="313.0" mnemonicParsing="false" onMouseClicked="#page2" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: transparent;" text="FAVORITOS" textFill="WHITE" />
+                              <ImageView blendMode="LIGHTEN" fitHeight="102.0" fitWidth="136.0" layoutX="37.0" layoutY="33.0" pickOnBounds="true" smooth="false">
+                                 <image>
+                                    <Image url="@../../../../WhatsApp%20Image%202024-09-06%20at%2020.37.15.jpeg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </left>
+               <center>
+                  <AnchorPane fx:id="ap" onMouseClicked="#home" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane fx:id="app" layoutX="6.0" layoutY="7.0" prefHeight="555.0" prefWidth="889.0" style="-fx-background-color: #fee5ad;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane fx:id="AnchorPane" layoutX="6.0" layoutY="10.0" prefHeight="535.0" prefWidth="876.0" style="-fx-background-color: #fee5ad;">
+                                 <children>
+                                    <Label layoutX="80.0" layoutY="70.0" prefHeight="37.0" prefWidth="684.0" style="-fx-background-color: transparent;" text="ADICIONE OS INGREDIENTES DISPONIVEIS NA SUA CASA!" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Bold" size="23.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="226.0" layoutY="194.0" text="NOME:" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Bold" size="14.0" />
+                                       </font></Label>
+                                    <TextField fx:id="txt_nome" layoutX="282.0" layoutY="190.0" onAction="#addIngrediente" prefHeight="25.0" prefWidth="219.0" promptText="ex: ovo, farinha, macarrao" />
+                                    <Label layoutX="133.0" layoutY="240.0" text="TIPO DO ALIMENTO:" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Bold" size="14.0" />
+                                       </font></Label>
+                                    <TextField fx:id="txt_tipo" layoutX="282.0" layoutY="235.0" onAction="#addIngrediente" prefHeight="25.0" prefWidth="219.0" promptText="ex: laticions, massas, proteinas" />
+                                    <Button fx:id="btn_adicionar" layoutX="305.0" layoutY="282.0" mnemonicParsing="false" onAction="#addIngrediente" prefHeight="29.0" prefWidth="179.0" style="-fx-background-color: #f7a541;" text="ADICIONAR INGREDIENTE" textFill="#ebebeb">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font></Button>
+                                    <Button fx:id="btn_procurar" layoutX="247.0" layoutY="383.0" mnemonicParsing="false" onAction="#procuraReceita" prefHeight="62.0" prefWidth="290.0" style="-fx-background-color: #f45d4c;" text="PROCURAR RECEITA" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial" size="24.0" />
+                                       </font>
+                                    </Button>
+                                    <Label layoutX="242.0" layoutY="453.0" prefHeight="17.0" prefWidth="306.0" text="Para visualizar, clique em receitas no menu ao lado! " textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
